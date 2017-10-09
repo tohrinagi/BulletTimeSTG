@@ -136,6 +136,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4226356705633386}
+  - component: {fileID: 114423739010624706}
   m_Layer: 0
   m_Name: Wave
   m_TagString: Untagged
@@ -644,6 +645,18 @@ MonoBehaviour:
   bullet: {fileID: 1622285975000248, guid: 12e171d47470e460fac7bec7d6b0dfa4, type: 2}
   canShot: 0
   explosion: {fileID: 1078832624475908, guid: 80606a8dd19aa4e34a63fa88fd071c3f, type: 2}
+--- !u!114 &114423739010624706
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1737932446983450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96e1af5bfb2d47f898b461481c80590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 1
 --- !u!114 &114528574226097244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -656,6 +669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 10
+  point: 100
 --- !u!114 &114643266851507606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -684,6 +698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 10
+  point: 100
 --- !u!114 &114940894647650776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -696,6 +711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 10
+  point: 100
 --- !u!212 &212131048416530520
 SpriteRenderer:
   m_ObjectHideFlags: 1

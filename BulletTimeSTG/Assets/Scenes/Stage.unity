@@ -991,12 +991,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - {fileID: 1737932446983450, guid: ef902e616f35c4eedb8210b9544c3565, type: 2}
-  - {fileID: 1850372581839874, guid: a7f61660e88cc4741895774faa4d34ca, type: 2}
-  - {fileID: 1737932446983450, guid: ef902e616f35c4eedb8210b9544c3565, type: 2}
-  - {fileID: 1790037054644000, guid: 4480b2bea119647fb9f0e9d67c78d90a, type: 2}
-  - {fileID: 1737932446983450, guid: ef902e616f35c4eedb8210b9544c3565, type: 2}
-  - {fileID: 1850372581839874, guid: a7f61660e88cc4741895774faa4d34ca, type: 2}
-  - {fileID: 1790037054644000, guid: 4480b2bea119647fb9f0e9d67c78d90a, type: 2}
 --- !u!4 &1588770562
 Transform:
   m_ObjectHideFlags: 0

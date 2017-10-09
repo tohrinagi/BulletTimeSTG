@@ -7,17 +7,18 @@ public class Emitter : MonoBehaviour {
 	// Waveプレハブを格納する
 	public GameObject[] waves;
 
-	// 現在のWave
-	private int currentWave;
-
     // Wave開始
     private bool isStart = false;
 
 	// Managerコンポーネント
 	private Manager manager;
 
+    // waveCuont
+    private int waveCount;
+
     public void StartWave() {
         isStart = true;
+        waveCount = 0;
     }
 
     public void StopWave() {
@@ -31,18 +32,21 @@ public class Emitter : MonoBehaviour {
 
             for (int j = 0; j < gameObject.transform.childCount; j++)
             {
-				GameObject enemy = gameObject.transform.GetChild(j).gameObject;
-
-				for (int k = 0; k < gameObject.transform.childCount; k++)
-				{
-					GameObject bullet = gameObject.transform.GetChild(k).gameObject;
-					Destroy(bullet);
-				}
+                GameObject enemy = gameObject.transform.GetChild(j).gameObject;
 				Destroy(enemy);
 			}
 			Destroy(wave);
 		}
-	}
+
+		var bullets = GameObject.FindGameObjectsWithTag("Bullet");
+		foreach (GameObject bullet in bullets)
+		{
+			Destroy(bullet);
+		}
+    }
+    float CalcDiffculty(){
+        return waveCount + (waveCount / 3) * 5;
+    }
 
 	void Update()
 	{
@@ -73,16 +77,19 @@ public class Emitter : MonoBehaviour {
 
         if ( gameObject.transform.childCount == 0 )
         {
-			GameObject wave = (GameObject)Instantiate(waves[currentWave], transform.position, Quaternion.identity);
+			GameObject wave = (GameObject)Instantiate(GetWavePrefab(), transform.position, Quaternion.identity);
+            wave.GetComponent<Wave>().difficulty = CalcDiffculty();
 			// WaveをEmitterの子要素にする
 			wave.transform.parent = transform;
 
-        } 
+        }
 
-		// 格納されているWaveを全て実行したらcurrentWaveを0にする（最初から -> ループ）
-		if (waves.Length <= ++currentWave)
-		{
-			currentWave = 0;
-		}
-	}
+        ++waveCount;	
+    }
+
+    GameObject GetWavePrefab() {
+        var index = Random.Range(0, waves.Length - 1);
+        return waves[index];
+    }
 }
+

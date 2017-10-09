@@ -39,8 +39,7 @@ public class Spaceship : MonoBehaviour
 	// 弾の作成
 	public void Shot(Transform origin)
 	{
-		GameObject b = (GameObject)Instantiate(bullet, origin.position, origin.rotation);
-        b.transform.parent = origin;
+		Instantiate(bullet, origin.position, origin.rotation);
 	}
 
 	// アニメーターコンポーネントの取得
