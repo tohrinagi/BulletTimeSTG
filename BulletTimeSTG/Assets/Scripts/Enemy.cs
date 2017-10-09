@@ -10,6 +10,9 @@ public class Enemy : MonoBehaviour {
 	// ヒットポイント
 	public int hp = 1;
 
+	// スコアのポイント
+	public int point = 100;
+
 	// 機体の移動
 	public void Move(Vector2 direction)
 	{
@@ -71,7 +74,10 @@ public class Enemy : MonoBehaviour {
 		// ヒットポイントが0以下であれば
 		if (hp <= 0)
 		{
-			// 爆発
+			// スコアコンポーネントを取得してポイントを追加
+			FindObjectOfType<Score>().AddPoint(point);
+
+            // 爆発
 			spaceship.Explosion();
 
 			// エネミーの削除
