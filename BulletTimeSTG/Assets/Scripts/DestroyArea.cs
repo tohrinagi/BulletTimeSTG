@@ -4,6 +4,13 @@ public class DestroyArea : MonoBehaviour
 {
     void OnTriggerExit2D(Collider2D c)
     {
-        Destroy(c.gameObject);
+        if (c.gameObject.tag == "Bullet")
+        {
+            c.gameObject.GetComponent<Bullet>().ReturnToPool();
+        }
+        else
+        {
+            Destroy(c.gameObject);
+        }
     }
 }

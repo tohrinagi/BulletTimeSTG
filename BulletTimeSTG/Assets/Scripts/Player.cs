@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
+    
+    public Bullet bullet;
+    public GameObject shooterR;
+	public GameObject shooterL;
+    public float shotDelay;
 
 	// Spaceshipコンポーネント
 	Spaceship spaceship;
@@ -16,13 +21,14 @@ public class Player : MonoBehaviour {
 		while (true)
 		{
 			// 弾をプレイヤーと同じ位置/角度で作成
-			spaceship.Shot(transform);
+            ObjectPool.instance.Create(bullet, shooterR.transform.position, shooterR.transform.rotation);
+			ObjectPool.instance.Create(bullet, shooterL.transform.position, shooterL.transform.rotation);
 
 			// ショット音を鳴らす
 			GetComponent<AudioSource>().Play();
 
 			// shotDelay秒待つ
-			yield return new WaitForSeconds(spaceship.shotDelay);
+			yield return new WaitForSeconds(shotDelay);
 		}
     }
 
@@ -77,13 +83,6 @@ public class Player : MonoBehaviour {
 	{
 		// レイヤー名を取得
 		string layerName = LayerMask.LayerToName(c.gameObject.layer);
-
-		// レイヤー名がBullet (Enemy)の時は弾を削除
-		if (layerName == "Bullet(Enemy)")
-		{
-			// 弾の削除
-			Destroy(c.gameObject);
-		}
 
 		// レイヤー名がBullet (Enemy)またはEnemyの場合は爆発
 		if (layerName == "Bullet(Enemy)" || layerName == "Enemy")

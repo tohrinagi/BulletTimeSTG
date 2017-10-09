@@ -127,8 +127,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  shotDelay: 0.3
-  bullet: {fileID: 1622285975000248, guid: 12e171d47470e460fac7bec7d6b0dfa4, type: 2}
   canShot: 1
   explosion: {fileID: 1078832624475908, guid: 80606a8dd19aa4e34a63fa88fd071c3f, type: 2}
 --- !u!114 &114438471640549518
@@ -145,7 +143,7 @@ MonoBehaviour:
   BaseHp: 1
   BasePoint: 100
   moves:
-  - {fileID: 1565572497322230, guid: 226ba83f8abb8470c9498e1adc5a37f3, type: 2}
+  - {fileID: 1367687379919018, guid: 226ba83f8abb8470c9498e1adc5a37f3, type: 2}
 --- !u!114 &114802141348707710
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -8,9 +8,11 @@ public class Move01 : MonoBehaviour {
 
     Transform parent;
 
-    public GameObject bullet;
+	public Bullet bullet;
+	// 弾を撃つ間隔
+	public float shotDelay;
 
-    IEnumerator Start()
+	IEnumerator Start()
 	{
         parent = transform.parent;
 
@@ -24,6 +26,10 @@ public class Move01 : MonoBehaviour {
         }
         spaceship.MoveStop();
 
-        Instantiate(bullet, parent.position, parent.rotation);
+		while (true)
+		{
+            ObjectPool.instance.Create(bullet, parent.position,Quaternion.Euler(0,0,180));
+            yield return new WaitForSeconds(shotDelay);
+        }
 	}
 }

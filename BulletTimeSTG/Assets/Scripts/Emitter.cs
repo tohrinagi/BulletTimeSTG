@@ -41,7 +41,7 @@ public class Emitter : MonoBehaviour {
 		var bullets = GameObject.FindGameObjectsWithTag("Bullet");
 		foreach (GameObject bullet in bullets)
 		{
-			Destroy(bullet);
+            bullet.GetComponent<Bullet>().ReturnToPool();
 		}
     }
     float CalcDiffculty(){

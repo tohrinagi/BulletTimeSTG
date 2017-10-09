@@ -37,8 +37,8 @@ public class Enemy : MonoBehaviour {
 
         while (true)
         {
-            GameObject move = (GameObject)Instantiate(moves[currentMove]);
-　 　                move.transform.parent = transform;
+            GameObject move = (GameObject)Instantiate(moves[currentMove], transform.position, transform.rotation);
+　 　       move.transform.parent = transform;
 
             while (move.activeSelf)
 			{
@@ -63,17 +63,14 @@ public class Enemy : MonoBehaviour {
 		// レイヤー名がBullet (Player)以外の時は何も行わない
 		if (layerName != "Bullet(Player)") return;
 
-		// PlayerBulletのTransformを取得
-		Transform playerBulletTransform = c.transform.parent;
-
 		// Bulletコンポーネントを取得
-		Bullet bullet = playerBulletTransform.GetComponent<Bullet>();
+        Bullet bullet = c.gameObject.GetComponent<Bullet>();
 
 		// ヒットポイントを減らす
 		hp = hp - bullet.power;
 
-		// 弾の削除
-		Destroy(c.gameObject);
+        // 弾の削除
+        bullet.ReturnToPool();
 
 		// ヒットポイントが0以下であれば
 		if (hp <= 0)
