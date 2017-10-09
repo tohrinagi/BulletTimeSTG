@@ -88,5 +88,6 @@ public class Enemy : MonoBehaviour {
 
 			spaceship.GetAnimator().SetTrigger("Damage");
 
-		}    }
+		}   
+    }
 }

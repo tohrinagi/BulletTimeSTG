@@ -57,6 +57,14 @@ public class Player : MonoBehaviour {
 		// 上・下
 		float y = Input.GetAxisRaw("Vertical");
 
+
+        if(Input.GetKeyDown("z")) {
+            Time.timeScale = 0.5f;
+        } else if(Input.GetKeyUp("z")) {
+            Time.timeScale = 1.0f;
+		}
+
+
 		// 移動する向きを求める
 		Vector2 direction = new Vector2(x, y).normalized;
 

@@ -10,50 +10,79 @@ public class Emitter : MonoBehaviour {
 	// 現在のWave
 	private int currentWave;
 
+    // Wave開始
+    private bool isStart = false;
+
 	// Managerコンポーネント
 	private Manager manager;
 
-	IEnumerator Start()
-	{
+    public void StartWave() {
+        isStart = true;
+    }
 
-		// Waveが存在しなければコルーチンを終了する
-		if (waves.Length == 0)
+    public void StopWave() {
+        isStart = false;
+	}
+
+    public void ResetWave() {
+        for (int i = 0; i < gameObject.transform.childCount; i++)
+        {
+            GameObject wave = gameObject.transform.GetChild(i).gameObject;
+
+            for (int j = 0; j < gameObject.transform.childCount; j++)
+            {
+				GameObject enemy = gameObject.transform.GetChild(j).gameObject;
+
+				for (int k = 0; k < gameObject.transform.childCount; k++)
+				{
+					GameObject bullet = gameObject.transform.GetChild(k).gameObject;
+					Destroy(bullet);
+				}
+				Destroy(enemy);
+			}
+			Destroy(wave);
+		}
+	}
+
+	void Update()
+	{
+        if (!isStart) { return; }
+
+        // Waveがあれば実行し、敵がないならば削除
+		if (gameObject.transform.childCount >= 0)
 		{
-			yield break;
+			bool isEndWave = true;
+			for (int i = 0; i < gameObject.transform.childCount; i++)
+			{
+				GameObject wave = gameObject.transform.GetChild(i).gameObject;
+				if (wave.transform.childCount > 0)
+				{
+					isEndWave = false;
+				}
+			}
+			if (isEndWave)
+			{
+				for (int i = 0; i < gameObject.transform.childCount; i++)
+				{
+					GameObject wave = gameObject.transform.GetChild(i).gameObject;
+					// Waveの削除
+					Destroy(wave);
+				}
+			}
 		}
 
-		// Managerコンポーネントをシーン内から探して取得する
-		manager = FindObjectOfType<Manager>();
-
-		while (true)
-		{
-			// タイトル表示中は待機
-			while (manager.IsPlaying() == false)
-			{
-				yield return new WaitForEndOfFrame();
-			}
-
-			// Waveを作成する
+        if ( gameObject.transform.childCount == 0 )
+        {
 			GameObject wave = (GameObject)Instantiate(waves[currentWave], transform.position, Quaternion.identity);
-
 			// WaveをEmitterの子要素にする
 			wave.transform.parent = transform;
 
-			// Waveの子要素のEnemyが全て削除されるまで待機する
-			while (wave.transform.childCount != 0)
-			{
-				yield return new WaitForEndOfFrame();
-			}
+        } 
 
-			// Waveの削除
-			Destroy(wave);
-
-			// 格納されているWaveを全て実行したらcurrentWaveを0にする（最初から -> ループ）
-			if (waves.Length <= ++currentWave)
-			{
-				currentWave = 0;
-			}
-
+		// 格納されているWaveを全て実行したらcurrentWaveを0にする（最初から -> ループ）
+		if (waves.Length <= ++currentWave)
+		{
+			currentWave = 0;
 		}
 	}
 }

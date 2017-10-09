@@ -29,10 +29,22 @@ public class Manager : MonoBehaviour {
 		// ゲームスタート時に、タイトルを非表示にしてプレイヤーを作成する
 		title.SetActive(false);
 		Instantiate(player, player.transform.position, player.transform.rotation);
+        FindObjectOfType<Emitter>().StartWave();
 	}
 
 	public void GameOver()
 	{
+        StartCoroutine("GameEnd");
+    }
+
+	// コルーチン  
+	private IEnumerator GameEnd()
+	{
+		FindObjectOfType<Emitter>().StopWave();
+
+		yield return new WaitForSeconds(3.0f);
+
+        FindObjectOfType<Emitter>().ResetWave();
 		// ハイスコアの保存
 		FindObjectOfType<Score>().Save();
 
