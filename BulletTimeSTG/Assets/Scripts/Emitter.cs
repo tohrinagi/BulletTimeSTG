@@ -45,7 +45,7 @@ public class Emitter : MonoBehaviour {
 		}
     }
     float CalcDiffculty(){
-        return waveCount + (waveCount / 3) * 5;
+        return 1; //waveCount + (waveCount / 3) * 5;
     }
 
 	void Update()
@@ -78,7 +78,7 @@ public class Emitter : MonoBehaviour {
         if ( gameObject.transform.childCount == 0 )
         {
 			GameObject wave = (GameObject)Instantiate(GetWavePrefab(), transform.position, Quaternion.identity);
-            wave.GetComponent<Wave>().difficulty = CalcDiffculty();
+            wave.GetComponent<Wave>().SetDifficulty(CalcDiffculty());
 			// WaveをEmitterの子要素にする
 			wave.transform.parent = transform;
 

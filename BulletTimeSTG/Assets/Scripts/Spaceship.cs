@@ -47,4 +47,15 @@ public class Spaceship : MonoBehaviour
 	{
 		return animator;
 	}
+
+	// 機体の移動
+	public void Move(Vector2 direction)
+	{
+		GetComponent<Rigidbody2D>().velocity = direction * speed;
+	}
+
+    public void MoveStop()
+    {
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+    }
 }

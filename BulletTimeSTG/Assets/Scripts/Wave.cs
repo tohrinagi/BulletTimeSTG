@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class Wave : MonoBehaviour {
 
-    // 難易度
-    public float difficulty = 1;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void SetDifficulty(float difficulty) {
+		for (int i = 0; i < gameObject.transform.childCount; i++)
+		{
+			GameObject enemy = gameObject.transform.GetChild(i).gameObject;
+            enemy.GetComponent<Enemy>().SetDifficulty(difficulty);
+		}
+    }
 }

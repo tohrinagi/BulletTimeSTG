@@ -8,16 +8,24 @@ public class Enemy : MonoBehaviour {
 	Spaceship spaceship;
 
 	// ヒットポイント
-	public int hp = 1;
+	public int BaseHp = 1;
 
 	// スコアのポイント
-	public int point = 100;
+	public int BasePoint = 100;
 
-	// 機体の移動
-	public void Move(Vector2 direction)
-	{
-		GetComponent<Rigidbody2D>().velocity = direction * spaceship.speed; ;
-	}
+    // 動作方法
+    public GameObject[] moves;
+
+
+    int currentMove = 0;
+
+    int hp = 1;
+    int point = 100;
+        
+    public void SetDifficulty(float difficulty ) {
+        hp = (int)(BaseHp * difficulty);
+        point = (int)(BaseHp * difficulty);
+    }
 
 
 	IEnumerator Start()
@@ -25,30 +33,26 @@ public class Enemy : MonoBehaviour {
 		// Spaceshipコンポーネントを取得
 		spaceship = GetComponent<Spaceship>();
 
-		// ローカル座標のY軸のマイナス方向に移動する
-		Move(transform.up * -1);
+        currentMove = 0;
 
-		// canShotがfalseの場合、ここでコルーチンを終了させる
-		if (spaceship.canShot == false)
-		{
-			yield break;
-		}
-		while (true)
-		{
+        while (true)
+        {
+            GameObject move = (GameObject)Instantiate(moves[currentMove]);
+　 　                move.transform.parent = transform;
 
-			// 子要素を全て取得する
-			for (int i = 0; i < transform.childCount; i++)
+            while (move.activeSelf)
 			{
+				yield return new WaitForEndOfFrame();
+			}
+            Destroy(move);
 
-				Transform shotPosition = transform.GetChild(i);
-
-				// ShotPositionの位置/角度で弾を撃つ
-				spaceship.Shot(shotPosition);
+			if (moves.Length >= ++currentMove)
+			{
+				currentMove = 0;
 			}
 
-			// shotDelay秒待つ
-			yield return new WaitForSeconds(spaceship.shotDelay);
-		}
+            yield return new WaitForEndOfFrame();
+        }
 	}
 
 	void OnTriggerEnter2D(Collider2D c)
