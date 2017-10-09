@@ -4,12 +4,25 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    public float speed = 5;
+	// Spaceshipコンポーネント
+	Spaceship spaceship;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+	// Startメソッドをコルーチンとして呼び出す
+	IEnumerator Start()
+	{
+		// Spaceshipコンポーネントを取得
+		spaceship = GetComponent<Spaceship>();
+
+		while (true)
+		{
+
+			// 弾をプレイヤーと同じ位置/角度で作成
+			spaceship.Shot(transform);
+
+			// shotDelay秒待つ
+			yield return new WaitForSeconds(spaceship.shotDelay);
+		}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -19,13 +32,10 @@ public class Player : MonoBehaviour {
 		// 上・下
 		float y = Input.GetAxisRaw("Vertical");
 
-        Debug.Log(x);
-		Debug.Log(y);
-
 		// 移動する向きを求める
 		Vector2 direction = new Vector2(x, y).normalized;
 
-		// 移動する向きとスピードを代入する
-		GetComponent<Rigidbody2D>().velocity = direction * speed;
-	}
+		// 移動
+		spaceship.Move(direction);
+    }
 }
