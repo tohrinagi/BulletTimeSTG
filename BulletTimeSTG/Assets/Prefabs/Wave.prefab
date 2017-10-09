@@ -273,7 +273,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1709031301022422}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 0}
+  m_LocalPosition: {x: 1, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4061447865813568}
@@ -302,7 +302,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1922798993241582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 1, z: 0}
+  m_LocalPosition: {x: -1, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4143133000567634}
@@ -318,7 +318,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1470146958746376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4770837015741834}
@@ -623,8 +623,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecde8763d9c9a498ba1b6ce8a53a61ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
-  shotDelay: 0.3
+  speed: 1
+  shotDelay: 3
   bullet: {fileID: 1622285975000248, guid: 12e171d47470e460fac7bec7d6b0dfa4, type: 2}
   canShot: 1
   explosion: {fileID: 1078832624475908, guid: 80606a8dd19aa4e34a63fa88fd071c3f, type: 2}
@@ -639,10 +639,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecde8763d9c9a498ba1b6ce8a53a61ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
-  shotDelay: 0.3
+  speed: 1
+  shotDelay: 10000
   bullet: {fileID: 1622285975000248, guid: 12e171d47470e460fac7bec7d6b0dfa4, type: 2}
-  canShot: 1
+  canShot: 0
   explosion: {fileID: 1078832624475908, guid: 80606a8dd19aa4e34a63fa88fd071c3f, type: 2}
 --- !u!114 &114528574226097244
 MonoBehaviour:
@@ -667,10 +667,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecde8763d9c9a498ba1b6ce8a53a61ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
-  shotDelay: 0.3
+  speed: 1
+  shotDelay: 10000
   bullet: {fileID: 1622285975000248, guid: 12e171d47470e460fac7bec7d6b0dfa4, type: 2}
-  canShot: 1
+  canShot: 0
   explosion: {fileID: 1078832624475908, guid: 80606a8dd19aa4e34a63fa88fd071c3f, type: 2}
 --- !u!114 &114771147174609806
 MonoBehaviour:
