@@ -6,13 +6,13 @@ public class Bullet : MonoBehaviour {
 
     public int speed = 5;
 
-	// Use this for initialization
+	// ゲームオブジェクト生成から削除するまでの時間
+	public float lifeTime = 5;	// Use this for initialization
+
 	void Start () {
-        GetComponent<Rigidbody2D>().velocity = transform.up.normalized * speed;	
+        GetComponent<Rigidbody2D>().velocity = transform.up.normalized * speed;
+
+		// lifeTime秒後に削除
+		Destroy(gameObject, lifeTime);
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

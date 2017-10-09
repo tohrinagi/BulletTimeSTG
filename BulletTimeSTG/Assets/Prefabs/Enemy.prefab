@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4851337504969702}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ShotPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4363514838475424}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ShotPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,8 @@ GameObject:
   - component: {fileID: 50702668640569320}
   - component: {fileID: 114309571075373678}
   - component: {fileID: 114040682256919176}
-  m_Layer: 0
+  - component: {fileID: 60790428894607314}
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +70,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4068764251100480}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ShotPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,6 +152,38 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!60 &60790428894607314
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1449744043436982}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.96, y: 0.96}
+    newSize: {x: 0.96, y: 0.96}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.13492344, y: 0.23785663}
+      - {x: -0.12094948, y: 0.2381947}
+      - {x: -0.22923446, y: 0.18201423}
+      - {x: -0.25556698, y: -0.14081073}
+      - {x: -0.14547117, y: -0.26954067}
+      - {x: 0.13461728, y: -0.26700246}
+      - {x: 0.24954072, y: -0.1571554}
+      - {x: 0.22923437, y: 0.15978217}
 --- !u!95 &95521918098504706
 Animator:
   serializedVersion: 3
@@ -183,6 +216,7 @@ MonoBehaviour:
   shotDelay: 0.3
   bullet: {fileID: 1622285975000248, guid: 12e171d47470e460fac7bec7d6b0dfa4, type: 2}
   canShot: 1
+  explosion: {fileID: 1078832624475908, guid: 80606a8dd19aa4e34a63fa88fd071c3f, type: 2}
 --- !u!114 &114309571075373678
 MonoBehaviour:
   m_ObjectHideFlags: 1
