@@ -10,9 +10,6 @@ public class Emitter : MonoBehaviour {
     // Wave開始
     private bool isStart = false;
 
-	// Managerコンポーネント
-	private Manager manager;
-
     // waveCuont
     private int waveCount;
 

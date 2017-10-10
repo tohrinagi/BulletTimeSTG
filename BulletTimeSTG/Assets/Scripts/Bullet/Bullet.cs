@@ -22,6 +22,12 @@ public class Bullet : PoolableObject
 		return new Vector2(Mathf.Sin(rad) * speed, Mathf.Cos(rad) * speed);
 	}
 
+    public void GetAngleAndSpeed(Vector2 vel, ref float angle, ref float speed)
+	{
+		angle = Mathf.Atan2(vel.x, vel.y) * Mathf.Rad2Deg;
+        speed = vel.magnitude;
+	}
+
     public override void Init()
     {
     }

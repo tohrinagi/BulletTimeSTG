@@ -11,6 +11,9 @@ public class NWayBullet : Bullet
     public float nWayAngle = 30;
     public float angle = 0;
     public NormalBullet prefab;
+	public float awake = 0;
+	public float accer = 0;
+    public float curve = 0;
 
 	public override void Run()
 	{
@@ -22,6 +25,9 @@ public class NWayBullet : Bullet
             bullet.canAim = false;
             bullet.speed = speed;
             bullet.lifeTime = lifeTime;
+            bullet.awake = awake;
+            bullet.accer = accer;
+            bullet.curve = curve;
 
             float bulletAngle = (nWayAngle / 2) - (i * oneAngle);
             if (canAim)

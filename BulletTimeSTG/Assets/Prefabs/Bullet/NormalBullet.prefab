@@ -89,10 +89,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff68dffdc1bd49d1951b0297519c04f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  canAim: 1
-  direction: {x: 0, y: 0}
+  speed: 0.2
+  canAim: 0
+  angle: 180
   lifeTime: 5
+  awake: 0
+  accer: 0.1
 --- !u!212 &212992276236752850
 SpriteRenderer:
   m_ObjectHideFlags: 1
