@@ -6,7 +6,7 @@ public class DestroyArea : MonoBehaviour
     {
         if (c.gameObject.tag == "Bullet")
         {
-            c.gameObject.GetComponent<Bullet>().ReturnToPool();
+            c.gameObject.GetComponent<PoolableObject>().ReturnToPool();
         }
         else
         {

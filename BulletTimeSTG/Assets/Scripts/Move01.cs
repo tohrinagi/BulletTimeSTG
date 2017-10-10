@@ -28,7 +28,8 @@ public class Move01 : MonoBehaviour {
 
 		while (true)
 		{
-            ObjectPool.instance.Create(bullet, parent.position,Quaternion.Euler(0,0,180));
+            PoolableObject obj = ObjectPool.instance.Create(bullet, parent.position,Quaternion.Euler(0,0,180));
+            obj.GetComponent<Bullet>().Run();
             yield return new WaitForSeconds(shotDelay);
         }
 	}

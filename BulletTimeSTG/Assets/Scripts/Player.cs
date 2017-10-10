@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
     
-    public Bullet bullet;
+    public PlayerBullet bullet;
     public GameObject shooterR;
 	public GameObject shooterL;
     public float shotDelay;

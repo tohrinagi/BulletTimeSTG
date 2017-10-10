@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour {
 		if (layerName != "Bullet(Player)") return;
 
 		// Bulletコンポーネントを取得
-        Bullet bullet = c.gameObject.GetComponent<Bullet>();
+        PlayerBullet bullet = c.gameObject.GetComponent<PlayerBullet>();
 
 		// ヒットポイントを減らす
 		hp = hp - bullet.power;
